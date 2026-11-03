@@ -17,9 +17,20 @@ class Calculator:
 
     def divide(self, a, b):
         result = 0
+        negative = False
+        if b == 0:
+            raise ZeroDivisionError("division by zero")
+        if a < 0:
+            a = self.subtract(0, a)
+            negative = not negative
+        if b < 0:
+            b = self.subtract(0, b)
+            negative = not negative
         while a >= b:
             a = self.subtract(a, b)
             result += 1
+        if negative:
+            result = self.subtract(0, result)
         return result
     
     def modulo(self, a, b):

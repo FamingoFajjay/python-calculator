@@ -28,13 +28,15 @@ class TestCalculator(unittest.TestCase):
 
     def test_divide(self):
         self.assertEqual(self.calc.divide(9, 9), 1)
-        self.assertEqual(self.calc.divide(10, 3), 3)
-        self.assertEqual(self.calc.divide(8, 19), 0)
+        self.assertEqual(self.calc.divide(-10, -3), 3)
+        self.assertEqual(self.calc.divide(10, -3), -3)
+        self.assertEqual(self.calc.divide(-10, 3), -3)
 
     def test_modulo(self):
         self.assertEqual(self.calc.modulo(17, 9), 8)
         self.assertEqual(self.calc.modulo(-5, -2), -1)
         self.assertEqual(self.calc.modulo(15, -8), -1)
+        self.assertEqual(self.calc.modulo(-15, 8), 1)
 
 
 if __name__ == '__main__':
