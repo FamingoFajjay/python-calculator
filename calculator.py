@@ -34,16 +34,21 @@ class Calculator:
         return result
     
     def modulo(self, a, b):
-        if b > 0:
-            while a >= b:
-                a = self.subtract(a, b)
-            while a < 0:
-                a = self.add(a, b)
-        elif b < 0:
-            while a <= b:
-                a = self.subtract(a, b)
-            while a > 0:
-                a = self.add(a, b)
+        negative_a = a < 0
+        negative_b = b < 0
+        if b == 0:
+            raise ZeroDivisionError("division by zero")
+        if a < 0:
+            a = self.subtract(0, a)
+        if b < 0:
+            b = self.subtract(0, b)
+        while a >= b:
+            a = self.subtract(a, b)
+        if a != 0:
+            if negative_a != negative_b:
+                a = self.subtract(b, a)
+            if negative_b:
+                a = self.subtract(0, a)
         return a
 
 # Example usage:
